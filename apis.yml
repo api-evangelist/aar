@@ -1,7 +1,12 @@
 aid: aar
-url: https://raw.githubusercontent.com/api-evangelist/aar/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/aar/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.aar.com
+description: >-
+  AAR is a provider of aviation services to commercial and government customers worldwide,
+  offering aircraft parts supply, maintenance, repair, and overhaul, integrated solutions,
+  and expeditionary services.
