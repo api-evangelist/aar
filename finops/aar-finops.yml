@@ -1,191 +1,64 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: AAR Corp
+providerId: aar
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Aviation
+  - MRO
+  - Aerospace
+  - FinOps
+  - FOCUS
+description: AAR's API surface is delivered as part of MRO services contracts and software product licenses
+  (Trax, Aerostrat, Airinmar). There is no metered API invoice. FinOps mapping is structural only.
+notes: No public developer pricing — placeholder only. Costs flow through MRO service contracts and software
+  licenses, not a metered API line item.
+sources:
+  - https://www.aarcorp.com
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: AAR Corp
-providerId: aar
-publisherName: AAR Corp
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Aviation
-  - MRO
-  - Aerospace
-  - Defense
-  - Parts Supply
-  - Maintenance
-  - Government
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the AAR Corp API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: AAR Corp.
+serviceCategory: Aerospace / MRO
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Contract
+  billingFrequency: Per-Invoice
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: AAR Corp
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Aerospace / MRO
   ProviderName: AAR Corp
-  PublisherName: AAR Corp
-  InvoiceIssuerName: AAR Corp
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: AAR Corp.
+  InvoiceIssuerName: AAR Corp.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
+  - name: customer_contract
+    description: MRO services or software license contract — not a metered API unit.
+    unit: contract
+    aggregation: count
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: AAR Parts Supply
-    baseURL: ''
-    tags:
-      - Aviation
-      - Parts Supply
-      - Aircraft Parts
-      - Aerospace
-    serviceName: AAR Parts Supply
-    serviceCategory: API
-  - name: AAR Airframe MRO
-    baseURL: ''
-    tags:
-      - Aviation
-      - MRO
-      - Maintenance
-      - Repair
-      - Overhaul
-    serviceName: AAR Airframe MRO
-    serviceCategory: API
-  - name: AAR Component MRO
-    baseURL: ''
-    tags:
-      - Aviation
-      - MRO
-      - Components
-      - Repair
-    serviceName: AAR Component MRO
-    serviceCategory: API
-  - name: AAR Trax Aviation Software
-    baseURL: ''
-    tags:
-      - Aviation
-      - Software
-      - MRO Software
-      - Fleet Management
-      - Maintenance Tracking
-    serviceName: AAR Trax Aviation Software
-    serviceCategory: API
-  - name: AAR Aerostrat
-    baseURL: ''
-    tags:
-      - Aviation
-      - Software
-      - Supply Chain
-      - Parts Management
-    serviceName: AAR Aerostrat
-    serviceCategory: API
-  - name: AAR Airinmar Warranty and Claims
-    baseURL: ''
-    tags:
-      - Aviation
-      - Software
-      - Warranty Management
-      - Claims Processing
-    serviceName: AAR Airinmar Warranty and Claims
-    serviceCategory: API
-  - name: AAR Government Services
-    baseURL: ''
-    tags:
-      - Aviation
-      - Government
-      - Defense
-      - Expeditionary
-    serviceName: AAR Government Services
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - customer
+      - product
+principles:
+  - name: Visibility
+    description: Track integration cost as part of MRO operations spend; AAR does not provide a metered
+      API usage feed.
+  - name: Allocation
+    description: Allocate cost to the fleet operations or maintenance program that owns the AAR contract.
+  - name: Optimization
+    description: Optimize integration usage by aligning queries with maintenance cycles and using batched
+      parts requests where the contract allows.
+  - name: Accountability
+    description: Maintenance / operations leadership owns the AAR relationship; IT owns runtime. Review
+      activity at quarterly fleet reviews.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -4,118 +4,29 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: AAR Corp
 providerId: aar
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Aviation
   - MRO
   - Aerospace
-  - Defense
-  - Parts Supply
-  - Maintenance
-  - Government
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the AAR Corp API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: AAR does not publish public rate-limit documentation. Limits are governed by the underlying
+  software product (Trax, Aerostrat, Airinmar) license or the parts-supply integration contract.
+notes: No public developer rate-limit documentation — placeholder only.
+sources:
+  - https://www.aarcorp.com
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - AAR Parts Supply
-      - AAR Airframe MRO
-      - AAR Component MRO
-      - AAR Trax Aviation Software
-      - AAR Aerostrat
-      - AAR Airinmar Warranty and Claims
-      - AAR Government Services
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - AAR Parts Supply
-      - AAR Airframe MRO
-      - AAR Component MRO
-      - AAR Trax Aviation Software
-      - AAR Aerostrat
-      - AAR Airinmar Warranty and Claims
-      - AAR Government Services
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - AAR Parts Supply
-      - AAR Airframe MRO
-      - AAR Component MRO
-      - AAR Trax Aviation Software
-      - AAR Aerostrat
-      - AAR Airinmar Warranty and Claims
-      - AAR Government Services
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - AAR Parts Supply
-      - AAR Airframe MRO
-      - AAR Component MRO
-      - AAR Trax Aviation Software
-      - AAR Aerostrat
-      - AAR Airinmar Warranty and Claims
-      - AAR Government Services
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - AAR Parts Supply
-      - AAR Airframe MRO
-      - AAR Component MRO
-      - AAR Trax Aviation Software
-      - AAR Aerostrat
-      - AAR Airinmar Warranty and Claims
-      - AAR Government Services
+  - name: Customer integration throttling
+    scope: account
+    metric: varies
+    limit: governed by product license / customer agreement; no public numeric ceiling
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Contract-defined throttling
+    description: Throughput for parts supply, Trax, Aerostrat, and Airinmar integrations is established
+      in the customer agreement; coordinate volume changes with the AAR account team.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
