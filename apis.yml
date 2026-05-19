@@ -137,6 +137,8 @@ apis:
       to government and defense customers across five continents.
 
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/aar-corp
   - type: Website
     url: https://www.aarcorp.com
   - type: Features
