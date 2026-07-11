@@ -138,6 +138,8 @@ apis:
       to government and defense customers across five continents.
 
 common:
+  - type: DomainSecurity
+    url: security/aar-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/aar-corp
   - type: Website
