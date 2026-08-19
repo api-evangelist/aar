@@ -33,7 +33,7 @@ description: >-
   government customers worldwide.
 created: '2026-04-19'
 modified: '2026-04-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: aar:aar-parts-supply
     name: AAR Parts Supply
