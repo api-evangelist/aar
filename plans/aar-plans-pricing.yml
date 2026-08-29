@@ -6,9 +6,10 @@ providerId: aar
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+method: searched
+modified: '2026-08-29'
+reconciled: true
+plan_count: 0
 tags:
   - Aviation
   - MRO
@@ -18,10 +19,27 @@ description: AAR Corp is an aerospace and defense MRO services and parts supply 
   public developer pricing or self-service API plan; integrations with parts supply, Trax, Aerostrat,
   and Airinmar software products are sold through commercial contracts to airlines, MROs, and government
   customers.
-notes: No public developer pricing — placeholder only. AAR's integration surface is sold via commercial
-  contracts (parts supply EDI, Trax, Aerostrat, Airinmar).
+notes: >-
+  Re-verified 2026-08-29 by walking aarcorp.com (1,259 URLs in the sitemap), trax.aero,
+  aerostratsoftware.com, airinmar.com and airvoyant.com. There is no pricing page, no plans
+  page, and no self-service sign-up anywhere in AAR's estate. Every software product routes to
+  "Request a demo" or a sales contact; the parts business routes to AOG phone/email or the
+  myConnection partner portal. plan_count is 0 because AAR publishes zero plans, not because
+  the pricing page was not found. The single entry below records the one commercial motion AAR
+  actually states, and it carries no published price.
 sources:
-  - https://www.aarcorp.com
+  - url: https://www.aarcorp.com/en/software/
+    status: 200
+  - url: https://www.airvoyant.com/
+    status: 200
+    note: '"Request a demo" / sales@airvoyant.com — no pricing published'
+  - url: https://www.trax.aero/en/products/
+    status: 200
+  - url: https://shop.aarcorp.com/
+    status: 200
+    note: >-
+      The AAR PAARTS Store lists per-part prices for individual aviation parts. That is product
+      pricing, not an API or software plan, so it does not count toward plan_count.
 plans:
   - id: aar-customer
     name: Customer / Software Contract

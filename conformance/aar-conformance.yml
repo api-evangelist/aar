@@ -1,0 +1,123 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.aarcorp.com/en/about/certifications/
+provider: AAR Corp
+providerId: aar
+description: >-
+  AAR CORP. publishes an extensive aviation regulatory and quality certification register but
+  no API-level standards conformance of any kind. There is no OpenAPI, AsyncAPI, GraphQL SDL
+  or WSDL in which a standard could be declared, so every API/cross-cutting standard below is
+  recorded as not-conforming on the strength of an absent contract, not on a failed check.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      No oauth2 security scheme is declared anywhere (no spec exists) and
+      /.well-known/oauth-authorization-server returns 404 on every AAR host.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on every AAR host.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Observed error bodies are a vendor JSON envelope ({"message":...}) served as
+      application/json, not application/problem+json. See errors/aar-problem-types.yml.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on all eight AAR-controlled hosts probed.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset or Deprecation header observed; no deprecation policy published.
+  - id: rfc8615-well-known
+    conforms: false
+    evidence: No /.well-known/ document is served on any AAR host. See well-known/aar-well-known.yml.
+  - id: w3c-trace-context
+    conforms: partial
+    evidence: >-
+      shop.aarcorp.com returns a `traceresponse` header in W3C Trace Context format on 200
+      responses. Emitted by the hosting platform; AAR publishes no tracing contract.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      shop.aarcorp.com mounts the Adobe Commerce schema endpoint (/rest/all/schema) but it
+      returns HTTP 500 "Internal Error" for every service argument tried, so no OpenAPI/Swagger
+      document could be retrieved.
+  - id: wsdl-soap
+    conforms: false
+    evidence: >-
+      shop.aarcorp.com/soap is mounted and answers, but ?wsdl_list=1 and ?wsdl=1&services=...
+      both return a SOAP 1.2 Fault ("Internal Error"), not a WSDL document.
+  - id: graphql
+    conforms: false
+    evidence: POST https://shop.aarcorp.com/graphql returns a Varnish 404, not a GraphQL response.
+domain_standards:
+  note: >-
+    REWARD-ONLY per the rubric — a market with no declared standard is not penalised. AAR's
+    market (aviation aftermarket parts and MRO) DOES have one, ATA SPEC2000, and AAR states on
+    its own site that it uses EDI for transaction-level data exchange. But no AAR contract
+    declares SPEC2000, no SPEC2000 message type appears in any published AAR artifact, and AAR
+    does not name the standard on its own pages. It is therefore recorded as claimed-but-not-
+    demonstrated rather than as a conformance.
+  candidates:
+    - id: ata-spec2000
+      name: ATA SPEC2000 (aviation e-business / parts EDI)
+      declared_in_contract: false
+      conforms: unverified
+      evidence: >-
+        AAR's own consumables and expendables page states AAR "incorporates advanced
+        technologies, such as electronic data interchange (EDI) for transaction-level data
+        exchange and complete ERP system integration for receiving and inspection". The page
+        does not name SPEC2000, X12, or any message type, and no machine-readable contract
+        exists in which to check one.
+      source: https://www.aarcorp.com/en/services/commercial-solutions/consumables-and-expendables/
+      note: >-
+        Do not upgrade this to conforms:true without a SPEC2000 message type or chapter
+        reference published by AAR. Third-party trade press describes AAR's SPEC2000/X12 usage;
+        that is not AAR's own contract and is not sufficient evidence here.
+certifications:
+  published: true
+  source: https://www.aarcorp.com/en/about/certifications/
+  http_status: 200
+  note: >-
+    AAR publishes a full certification register. These are aviation regulatory, quality and
+    environmental certifications — there is NO information-security certification (no SOC 2,
+    no ISO 27001, no FedRAMP) listed anywhere on the page.
+  quality_and_environmental:
+    - ISO 9001:2015
+    - ISO 14001
+    - AS9100 / AS9100D
+    - AS9110 / AS9110C
+    - AS9120 / AS9120B
+    - NADCAP (composites manufacturing accreditation, per AAR newsroom)
+  distribution:
+    - ASA-100
+    - FAA AC 00-56B
+  regulatory_approvals:
+    - FAA Part 145 Repair Station Certificate
+    - FAA Air Agency Certificate
+    - FAA PMA (Parts Manufacturer Approval)
+    - FAA Operations Specifications
+    - EASA Part 145
+    - EASA Part 21J
+    - CAA-UK Maintenance Organisation Approval
+    - Transport Canada (TCCA)
+    - CAAC (China)
+    - JCAB (Japan)
+    - CAAS (Singapore)
+    - CAAT (Thailand)
+    - CAAV (Vietnam)
+    - CAAP (Philippines)
+    - DGCA (Indonesia)
+    - DCAL (Lao PDR)
+    - SSCA (Cambodia)
+    - MAA (Royal Thai Air Force military aviation authority)
+    - MAA-NLD (Netherlands military aviation authority)
+    - NAEW (NATO) accreditation
+  information_security:
+    soc2: false
+    iso27001: false
+    fedramp: false
+    pci_dss: false
+    note: >-
+      None found. No trust center, no security/compliance page, and no security certification
+      appears on the certifications register.

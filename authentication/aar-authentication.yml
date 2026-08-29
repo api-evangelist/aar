@@ -1,0 +1,81 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Live anonymous probes of https://shop.aarcorp.com/rest/V1/* and https://api.aarcorp.com/
+  on 2026-08-29. AAR CORP. publishes no developer authentication documentation; everything
+  below is what the running endpoints actually returned.
+provider: AAR Corp
+providerId: aar
+description: >-
+  AAR CORP. publishes no developer authentication guide, no OpenAPI securitySchemes, and no
+  OAuth or OIDC discovery document on any host. This profile is therefore built entirely
+  from observed runtime behaviour of the one live, anonymously reachable API surface AAR
+  operates — the AAR PAARTS Store commerce API at shop.aarcorp.com/rest/V1/ — plus the
+  api.aarcorp.com gateway. No credential, key format, token endpoint or scope list is
+  published by AAR, so none is recorded here.
+summary:
+  types:
+    - http-bearer
+  api_key_in: []
+  oauth2_flows: []
+  documented_by_provider: false
+  discovery_documents: none
+  note: >-
+    The bearer scheme below is inferred ONLY from the 401 challenge the live endpoint
+    returns; AAR does not document it, and no token endpoint was found. Treat as observed,
+    not as a provider contract.
+schemes:
+  - name: magentoBearerToken
+    type: http
+    scheme: bearer
+    surface: https://shop.aarcorp.com/rest/V1
+    status: observed
+    evidence:
+      - probe: GET https://shop.aarcorp.com/rest/V1/products
+        status: 401
+        body: '{"message":"The consumer isn''t authorized to access %resources.","parameters":{"resources":"Magento_Catalog::products"}}'
+      - probe: GET https://shop.aarcorp.com/rest/V1/store/storeViews
+        status: 401
+        body: '{"message":"The consumer isn''t authorized to access %resources.","parameters":{"resources":"Magento_Backend::store"}}'
+      - probe: GET https://shop.aarcorp.com/rest/V1/store/storeViews with Authorization Bearer <invalid>
+        status: 401
+        note: An invalid bearer token yields the same envelope; the header is read but no token issuance path is published.
+    note: >-
+      The 401 envelope carries a Magento ACL resource identifier (Magento_Catalog::products,
+      Magento_Backend::store), which is a platform-level permission name, not an AAR-published
+      OAuth scope. No scopes/ artifact is emitted, because AAR publishes no scope reference.
+anonymous_surface:
+  note: >-
+    A small set of /rest/V1 routes answer with no credential at all. These are the only
+    AAR API operations any third party can call today.
+  endpoints:
+    - method: GET
+      path: /rest/V1/directory/currency
+      status: 200
+      content_type: application/json; charset=utf-8
+    - method: GET
+      path: /rest/V1/directory/countries
+      status: 200
+      content_type: application/json; charset=utf-8
+    - method: POST
+      path: /rest/V1/guest-carts
+      status: 200
+      note: >-
+        Anonymous WRITE. Returns a guest quote identifier as a bare JSON string. Recorded
+        because an unauthenticated write surface is a material fact about the API, not
+        because AAR documents or endorses its use.
+gateway:
+  host: https://api.aarcorp.com
+  status: live
+  observed: >-
+    Every path probed (/, /openapi.json, /swagger.json, /api-docs, /docs, /v1, /api, /health,
+    /graphql, /mcp and all /.well-known/*) returned HTTP 404 with the JSON envelope
+    {"statusCode":404,"message":"Resource not found"}. The host is a real API gateway with no
+    anonymously discoverable route and no published authentication contract.
+partner_portal:
+  host: https://myconnection.aarcorp.com
+  note: >-
+    AAR's partner/customer portal. Anonymous requests complete the TLS handshake and open an
+    HTTP/2 stream, then receive no response within 15s. Not retried. Any customer-facing
+    integration credentials are issued through this portal or through a commercial contract,
+    neither of which is publicly documented.

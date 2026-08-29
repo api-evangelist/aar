@@ -1,0 +1,81 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Observed error responses from https://shop.aarcorp.com/rest/V1/*, https://shop.aarcorp.com/soap
+  and https://api.aarcorp.com/ on 2026-08-29. AAR CORP. publishes no error reference.
+provider: AAR Corp
+providerId: aar
+format: vendor-json
+rfc9457: false
+description: >-
+  AAR publishes no error-code reference for any of its surfaces. The catalogue below is the
+  set of error envelopes actually observed on the live hosts. None uses
+  application/problem+json; there is no type URI, no error code, and no remediation field —
+  a message string (plus, on the commerce host, a parameters object naming a platform ACL
+  resource) is the entire contract an integrator gets.
+envelopes:
+  - surface: https://shop.aarcorp.com/rest/V1
+    content_type: application/json; charset=utf-8
+    shape: '{ "message": string, "parameters": object (optional) }'
+    note: Adobe Commerce / Magento 2 webapi envelope. No machine-readable error code field.
+  - surface: https://api.aarcorp.com
+    content_type: application/json
+    shape: '{ "statusCode": integer, "message": string }'
+  - surface: https://shop.aarcorp.com/soap
+    content_type: application/soap+xml
+    shape: SOAP 1.2 env:Fault with env:Code/env:Value and env:Reason/env:Text
+problems:
+  - status: 401
+    title: Consumer is not authorized to access the resource
+    surface: https://shop.aarcorp.com/rest/V1
+    body: '{"message":"The consumer isn''t authorized to access %resources.","parameters":{"resources":"Magento_Catalog::products"}}'
+    observed_on:
+      - GET /rest/V1/products
+      - GET /rest/V1/store/storeViews
+      - GET /rest/V1/store/storeConfigs
+    remediation_published: false
+    note: >-
+      The %resources placeholder is returned uninterpolated in the message; the real value is
+      carried in parameters.resources. An agent parsing message alone gets a template string.
+  - status: 404
+    title: Request does not match any route
+    surface: https://shop.aarcorp.com/rest/V1
+    body: '{"message":"Request does not match any route."}'
+    observed_on:
+      - GET /rest/V1/nonexistent-route-abc
+    remediation_published: false
+  - status: 404
+    title: Resource not found
+    surface: https://api.aarcorp.com
+    body: '{"statusCode":404,"message":"Resource not found"}'
+    observed_on:
+      - GET / and every other path probed on api.aarcorp.com
+    remediation_published: false
+  - status: 500
+    title: Internal Error (with a Magento report ID)
+    surface: https://shop.aarcorp.com/rest/all/schema
+    body: '{"message":"Internal Error. Details are available in Magento log file. Report ID: webapi-<id>"}'
+    observed_on:
+      - GET /rest/all/schema?services=all
+      - GET /rest/default/schema?services=all
+      - GET /rest/all/schema?services=directoryCurrencyInformationAcquirerV1
+      - GET /index.php/rest/all/schema?services=all
+    remediation_published: false
+    note: >-
+      This is the platform's own OpenAPI/Swagger schema generator failing. It is the reason
+      no machine-readable contract could be harvested from a host that plainly serves one.
+  - status: 500
+    title: Internal Error (SOAP Fault)
+    surface: https://shop.aarcorp.com/soap
+    body: 'env:Fault / env:Code=env:Receiver / env:Reason=Internal Error. Details are available in Magento log file. Report ID: webapi-<id>'
+    observed_on:
+      - GET /soap?wsdl_list=1
+      - GET /soap?wsdl=1&services=directoryCurrencyInformationAcquirerV1
+    remediation_published: false
+    note: >-
+      The SOAP/WSDL surface is mounted and answers, but the WSDL generator fails the same way
+      the REST schema generator does, so no WSDL could be saved either.
+gaps:
+  - No error-code registry is published.
+  - No RFC 9457 problem+json; no type URI, no instance, no trace identifier in the body.
+  - No remediation guidance for any status.

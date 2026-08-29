@@ -1,0 +1,134 @@
+generated: '2026-08-29'
+method: probed
+source: live GET probes of /.well-known/* on every AAR-controlled host
+provider: AAR Corp
+providerId: aar
+description: >-
+  Full /.well-known/ discovery sweep across every host AAR CORP. controls — the corporate
+  site, the AAR PAARTS Store commerce host, the api.aarcorp.com gateway, the myConnection
+  partner portal, and the four software-subsidiary hosts (Trax, Aerostrat, Airinmar,
+  Airvoyant). Nothing is served: every path returned a real 404 (a genuine status code and
+  a real not-found body, not a catch-all). Recorded as an honest absence.
+hit_count: 0
+hosts:
+  - host: https://www.aarcorp.com
+    note: >-
+      Optimizely/Episerver CMS behind Akamai. Returns a real 404 status with the site 404
+      page (38,205 bytes) for every unknown path — not a soft-200 catch-all.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://shop.aarcorp.com
+    note: >-
+      AAR PAARTS Store (Adobe Commerce / Magento 2). Serves a live REST API at /rest/V1/
+      but publishes no .well-known discovery surface.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://api.aarcorp.com
+    note: >-
+      Live API gateway host — answers a JSON envelope {"statusCode":404,"message":"Resource
+      not found"} on every path probed, including /.well-known/*. No anonymous route found.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: https://www.trax.aero
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://aerostratsoftware.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.airinmar.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.airvoyant.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://myconnection.aarcorp.com
+    note: >-
+      AAR partner portal. TLS handshake and the HTTP/2 stream both complete, then the origin
+      never sends a response — every anonymous request timed out at 15s. Probed once, not
+      retried. Recorded as no-response rather than a status code.
+    documents:
+      - path: /
+        status: null
+        result: no response (origin accepted TLS + HTTP/2, sent no bytes within 15s)
+soft_404_control:
+  note: >-
+    Control probe run on every host with an obviously-invented path. www.aarcorp.com,
+    www.trax.aero, aerostratsoftware.com, www.airinmar.com and www.airvoyant.com all return
+    a real 404 status; api.aarcorp.com and shop.aarcorp.com return 404 with a JSON error
+    envelope. No host answers 200 for arbitrary /.well-known/* paths, so these 404s are
+    genuine absences and not a catch-all masking a served document.
+pointer_emitted: false
+pointer_note: >-
+  No WellKnown or SecurityTxt pointer is wired into apis.yml — nothing returned 200, so a
+  pointer would assert a surface AAR does not serve.

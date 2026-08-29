@@ -1,0 +1,53 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  npm registry + search, PyPI, and the AAR / Trax / Aerostrat / Airinmar / Airvoyant docs and
+  product pages, probed 2026-08-29.
+provider: AAR Corp
+providerId: aar
+description: >-
+  AAR CORP. and its software subsidiaries publish no first-party client library on any public
+  package registry. Recorded as a verified zero, with the near-miss name collisions named so a
+  later run does not adopt them by mistake.
+package_count: 0
+official_package_count: 0
+packages: []
+registries_checked:
+  - registry: npm
+    queries: ['trax', 'aar-corp', 'aar corp', 'airinmar', 'aerostrat', 'airvoyant', 'emro']
+    result: no first-party package
+  - registry: pypi
+    queries: ['trax']
+    result: no first-party package
+  - registry: docs/product pages
+    urls:
+      - https://www.trax.aero/en/products/
+      - https://www.aarcorp.com/en/software/
+      - https://www.airvoyant.com/
+      - https://www.airinmar.com/
+      - https://aerostratsoftware.com/
+    result: no SDK, client library, or download link published on any of them
+name_collisions:
+  - registry: npm
+    name: trax
+    version: 0.1.2
+    published: null
+    official: false
+    why_rejected: >-
+      "Stand-alone fork of Meteor Tracker; a way to do reactivity transparently", repo
+      github.com/jbe/trax. Unrelated to AAR's Trax aviation software subsidiary.
+  - registry: pypi
+    name: trax
+    version: 1.4.1
+    published: null
+    official: false
+    why_rejected: >-
+      Google's deep-learning library (github.com/google/trax). Unrelated to AAR's Trax.
+note: >-
+  version and published are recorded as null on both collision entries deliberately: the
+  registry metadata was fetched and read, and the fields are null because neither package is
+  AAR's, not because the registry went unchecked.
+pointer_emitted: false
+pointer_note: >-
+  No Packages and no SDKs pointer is wired into apis.yml. Zero official client libraries were
+  found, and an SDKs pointer would award AAR an SDK count it has not earned.

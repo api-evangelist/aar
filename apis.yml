@@ -1,6 +1,5 @@
 aid: aar
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/aar/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/aar/refs/heads/main/apis.yml
 name: AAR Corp
 type: Index
 deliveryModel:
@@ -28,219 +27,286 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aar.png
 tags:
-  - Aviation
-  - MRO
-  - Aerospace
-  - Defense
-  - Parts Supply
-  - Maintenance
-  - Government
-  - Fortune 1000
-description: >-
-  AAR Corp is a global aerospace and defense aftermarket solutions company and the
-  number one aviation maintenance, repair, and overhaul (MRO) provider in North America.
-  They offer aircraft parts supply, airframe and component MRO, integrated software solutions
-  (Trax, Aerostrat, Airinmar), and expeditionary services to commercial airlines and
-  government customers worldwide.
+- Aviation
+- MRO
+- Aerospace
+- Defense
+- Parts Supply
+- Maintenance
+- Government
+- Aviation Software
+- Supply Chain
+- E-Commerce
+- Fortune 1000
+description: 'AAR CORP. (NYSE: AIR) is a global aerospace and defense aftermarket solutions company and
+  the number one aviation maintenance, repair and overhaul (MRO) provider in North America. It supplies
+  new and used airframe and engine parts, performs airframe and component MRO, runs expeditionary and
+  sustainment programs for government and defense customers on five continents, and operates four aviation
+  software businesses — Trax (eMRO/eMobility aviation ERP), Aerostrat (Aerros maintenance scheduling),
+  Airvoyant (AI-driven parts procurement, launched April 2026) and Airinmar (component repair and warranty
+  management) — whose software covers more than 10,000 aircraft. AAR publishes no developer program, no
+  API reference and no machine-readable contract; its only anonymously reachable API surface is the undocumented
+  Adobe Commerce webapi behind the AAR PAARTS Store at shop.aarcorp.com/rest/V1/.'
 created: '2026-04-19'
-modified: '2026-04-19'
+modified: '2026-08-29'
 specificationVersion: '0.23'
 apis:
-  - aid: aar:aar-parts-supply
-    name: AAR Parts Supply
-    tags:
-      - Aviation
-      - Parts Supply
-      - Aircraft Parts
-      - Aerospace
-    humanURL: https://www.aarcorp.com
-    properties:
-      - url: https://www.aarcorp.com
-        type: Documentation
-    description: >-
-      AAR's parts supply division distributes new and used aircraft and engine parts
-      to commercial airlines, MROs, and government customers globally. Shipped and
-      received 23 million commercial parts in FY2025 across global platforms.
-
-  - aid: aar:aar-airframe-mro
-    name: AAR Airframe MRO
-    tags:
-      - Aviation
-      - MRO
-      - Maintenance
-      - Repair
-      - Overhaul
-    humanURL: https://www.aarcorp.com
-    properties:
-      - url: https://www.aarcorp.com
-        type: Documentation
-    description: >-
-      AAR provides airframe maintenance, repair, and overhaul (MRO) services as the
-      leading North American MRO provider. Services cover complete airframe checks,
-      structural repairs, modifications, and aircraft painting for commercial operators.
-
-  - aid: aar:aar-component-mro
-    name: AAR Component MRO
-    tags:
-      - Aviation
-      - MRO
-      - Components
-      - Repair
-    humanURL: https://www.aarcorp.com
-    properties:
-      - url: https://www.aarcorp.com
-        type: Documentation
-    description: >-
-      AAR component MRO services provide comprehensive maintenance, repair, and overhaul
-      for aircraft components, avionics, landing gear, and accessories for commercial
-      and government aviation platforms.
-
-  - aid: aar:aar-trax
-    name: AAR Trax Aviation Software
-    tags:
-      - Aviation
-      - Software
-      - MRO Software
-      - Fleet Management
-      - Maintenance Tracking
-    humanURL: https://www.aarcorp.com
-    properties:
-      - url: https://www.aarcorp.com
-        type: Documentation
-    description: >-
-      Trax is AAR's aviation maintenance management software (MMS) for airlines,
-      MROs, and cargo operators. Provides integrated fleet management, maintenance
-      tracking, inventory management, and compliance management capabilities.
-
-  - aid: aar:aar-aerostrat
-    name: AAR Aerostrat
-    tags:
-      - Aviation
-      - Software
-      - Supply Chain
-      - Parts Management
-    humanURL: https://www.aarcorp.com
-    properties:
-      - url: https://www.aarcorp.com
-        type: Documentation
-    description: >-
-      Aerostrat is AAR's aviation supply chain and parts management software, providing
-      inventory optimization, demand forecasting, and procurement automation for
-      airlines and MRO providers.
-
-  - aid: aar:aar-airinmar
-    name: AAR Airinmar Warranty and Claims
-    tags:
-      - Aviation
-      - Software
-      - Warranty Management
-      - Claims Processing
-    humanURL: https://www.aarcorp.com
-    properties:
-      - url: https://www.aarcorp.com
-        type: Documentation
-    description: >-
-      Airinmar is AAR's aviation warranty management and components repair solution,
-      providing warranty claim processing, repair order management, and vendor management
-      for airlines and MRO organizations.
-
-  - aid: aar:aar-government-services
-    name: AAR Government Services
-    tags:
-      - Aviation
-      - Government
-      - Defense
-      - Expeditionary
-    humanURL: https://www.aarcorp.com
-    properties:
-      - url: https://www.aarcorp.com
-        type: Documentation
-    description: >-
-      AAR's government services division provides comprehensive maintenance and supply
-      chain programs, shelters and sustainment systems, and aircraft parts and services
-      to government and defense customers across five continents.
-
+- aid: aar:aar-parts-supply
+  name: AAR Parts Supply
+  tags:
+  - Aviation
+  - Parts Supply
+  - Aircraft Parts
+  - Aerospace
+  humanURL: https://www.aarcorp.com/en/parts/
+  properties:
+  - url: https://www.aarcorp.com/en/parts/
+    type: Website
+  description: AAR's parts supply division distributes new and used aircraft and engine parts to commercial
+    airlines, MROs, and government customers globally. Shipped and received 23 million commercial parts
+    in FY2025 across global platforms.
+- aid: aar:aar-airframe-mro
+  name: AAR Airframe MRO
+  tags:
+  - Aviation
+  - MRO
+  - Maintenance
+  - Repair
+  - Overhaul
+  humanURL: https://www.aarcorp.com/en/repair/
+  properties:
+  - url: https://www.aarcorp.com/en/repair/
+    type: Website
+  description: AAR provides airframe maintenance, repair, and overhaul (MRO) services as the leading North
+    American MRO provider. Services cover complete airframe checks, structural repairs, modifications,
+    and aircraft painting for commercial operators.
+- aid: aar:aar-component-mro
+  name: AAR Component MRO
+  tags:
+  - Aviation
+  - MRO
+  - Components
+  - Repair
+  humanURL: https://www.aarcorp.com/en/repair/
+  properties:
+  - url: https://www.aarcorp.com/en/repair/
+    type: Website
+  description: AAR component MRO services provide comprehensive maintenance, repair, and overhaul for
+    aircraft components, avionics, landing gear, and accessories for commercial and government aviation
+    platforms.
+- aid: aar:aar-trax
+  name: AAR Trax Aviation Software
+  tags:
+  - Aviation
+  - Software
+  - MRO Software
+  - Fleet Management
+  - Maintenance Tracking
+  humanURL: https://www.trax.aero/
+  properties:
+  - url: https://www.trax.aero/
+    type: Website
+  description: Trax is AAR's aviation software subsidiary, wholly owned since 2023. Its flagship eMRO
+    is a browser-based, cloud-hosted aviation ERP unifying engineering, planning, production, inventory,
+    quality, documentation, technical records and finance, paired with the eMobility suite of offline-capable
+    mobile apps. Sold to airlines, MROs and cargo operators; access to product documentation requires
+    an iCentral customer account, and no public API is published.
+- aid: aar:aar-aerostrat
+  name: AAR Aerostrat (Aerros)
+  tags:
+  - Aviation
+  - Software
+  - Maintenance Planning
+  - Scheduling
+  - Fleet Allocation
+  humanURL: https://aerostratsoftware.com/
+  properties:
+  - url: https://aerostratsoftware.com/
+    type: Website
+  description: Aerostrat is AAR's maintenance planning software subsidiary, acquired in 2025 and run under
+    Trax. Its flagship product Aerros is an ERP-agnostic solution for long-range maintenance scheduling,
+    capacity planning and aircraft allocation. No public API or developer documentation is published.
+- aid: aar:aar-airinmar
+  name: AAR Airinmar Warranty and Claims
+  tags:
+  - Aviation
+  - Software
+  - Warranty Management
+  - Claims Processing
+  humanURL: https://www.airinmar.com/
+  properties:
+  - url: https://www.airinmar.com/
+    type: Website
+  description: Airinmar is AAR's aviation warranty management and components repair solution, providing
+    warranty claim processing, repair order management, and vendor management for airlines and MRO organizations.
+- aid: aar:aar-government-services
+  name: AAR Government Services
+  tags:
+  - Aviation
+  - Government
+  - Defense
+  - Expeditionary
+  humanURL: https://www.aarcorp.com/en/government-solutions/
+  properties:
+  - url: https://www.aarcorp.com/en/government-solutions/
+    type: Website
+  description: AAR's government services division provides comprehensive maintenance and supply chain
+    programs, shelters and sustainment systems, and aircraft parts and services to government and defense
+    customers across five continents.
+- aid: aar:aar-paarts-store
+  name: AAR PAARTS Store Commerce API
+  tags:
+  - Aviation
+  - Parts Supply
+  - E-Commerce
+  - Catalog
+  - Adobe Commerce
+  humanURL: https://shop.aarcorp.com/
+  baseURL: https://shop.aarcorp.com/rest/V1
+  properties:
+  - url: https://shop.aarcorp.com/
+    type: Website
+  description: 'The AAR PAARTS Store is AAR''s online aviation parts storefront, running on Adobe Commerce
+    (Magento 2). It exposes the platform''s standard REST webapi at https://shop.aarcorp.com/rest/V1/
+    and a SOAP endpoint at /soap. Verified live on 2026-08-29: GET /rest/V1/directory/currency and GET
+    /rest/V1/directory/countries return 200 anonymously, POST /rest/V1/guest-carts returns 200 with a
+    guest quote id, and the catalog and store surfaces return 401 with a Magento ACL envelope. AAR publishes
+    NO documentation for this surface and the platform''s own schema generator (/rest/all/schema, /soap?wsdl_list=1)
+    returns HTTP 500, so no OpenAPI or WSDL can be retrieved. Listed because it is real, callable and
+    served from AAR''s own domain — not because AAR offers it as a developer product.'
+  x-contract: none published; platform schema endpoint returns HTTP 500
+- aid: aar:aar-airvoyant
+  name: AAR Airvoyant
+  tags:
+  - Aviation
+  - Software
+  - Procurement
+  - Artificial Intelligence
+  - Supply Chain
+  humanURL: https://www.airvoyant.com/
+  properties:
+  - url: https://www.airvoyant.com/
+    type: Website
+  description: Airvoyant is AAR's AI-driven parts procurement platform, launched April 2026 with Delta
+    Air Lines and Air Canada as early adopters and AWS as its agentic-AI technology partner. It connects
+    buyers to the Aeroxchange supplier network, searches live inventory, consolidates supplier quotes
+    and recommends purchases through an AI agent workforce, integrating with Trax and other ERPs. Despite
+    being marketed as agentic, it publishes no API, no MCP server, no agent card and no developer documentation
+    — access is by sales demo only.
 common:
-  - type: DomainSecurity
-    url: security/aar-domain-security.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/aar-corp
-  - type: Website
-    url: https://www.aarcorp.com
-  - type: Features
-    data:
-      - name: Aircraft Parts Distribution
-        description: >-
-          Global distribution of new and used aircraft and engine parts for commercial
-          and government aviation platforms with 23 million parts processed annually.
-      - name: Airframe MRO
-        description: >-
-          North America's leading airframe maintenance, repair, and overhaul services
-          including full structural checks, modifications, and aircraft painting.
-      - name: Component MRO
-        description: >-
-          Comprehensive component, avionics, and landing gear maintenance and repair
-          services for commercial and military aviation.
-      - name: Trax MRO Software
-        description: >-
-          Integrated aviation maintenance management software covering fleet management,
-          maintenance tracking, inventory, and regulatory compliance.
-      - name: Aerostrat Parts Management
-        description: >-
-          Aviation supply chain software for inventory optimization, demand forecasting,
-          and procurement automation.
-      - name: Airinmar Warranty Management
-        description: >-
-          Warranty claim processing and components repair management software for
-          airlines and MRO organizations.
-      - name: Government Expeditionary Services
-        description: >-
-          Defense and government aviation services including maintenance programs,
-          shelter systems, and supply chain support in over 20 countries.
-  - type: UseCases
-    data:
-      - name: Commercial Airline MRO
-        description: >-
-          Commercial airlines outsourcing airframe and component maintenance to
-          AAR for cost-effective, FAA/EASA-approved maintenance programs.
-      - name: Aviation Parts Sourcing
-        description: >-
-          Airlines and MROs sourcing new and used aircraft parts through AAR's
-          global parts distribution network for aircraft-on-ground (AOG) situations.
-      - name: Fleet Management Software
-        description: >-
-          Airlines and MROs implementing Trax MRO software for end-to-end aircraft
-          maintenance management, inventory control, and compliance reporting.
-      - name: Government Aircraft Sustainment
-        description: >-
-          Defense agencies contracting AAR for aircraft maintenance, supply chain,
-          and expeditionary sustainment programs in deployed environments.
-      - name: Warranty Claims Processing
-        description: >-
-          Airlines using Airinmar to streamline warranty claim submissions, track
-          repair orders, and manage vendor relationships for component warranties.
-      - name: Supply Chain Optimization
-        description: >-
-          MRO organizations using Aerostrat to optimize parts inventory levels,
-          reduce carrying costs, and improve procurement efficiency.
-  - type: Integrations
-    data:
-      - name: Airlines and Commercial Operators
-        description: >-
-          Direct partnerships with major commercial airlines for MRO contracts,
-          parts supply, and software implementation.
-      - name: Government and Defense Agencies
-        description: >-
-          Contracts with US and international government defense agencies for aircraft
-          sustainment and supply chain services.
-      - name: FAA and EASA
-        description: >-
-          Regulatory approvals and compliance integration with FAA, EASA, and other
-          civil aviation authority regulatory frameworks.
-      - name: OEM Partnerships
-        description: >-
-          Authorized maintenance and parts relationships with major aircraft OEMs
-          including Boeing, Airbus, and engine manufacturers.
+- type: DomainSecurity
+  url: security/aar-domain-security.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/aar-corp
+- type: Website
+  url: https://www.aarcorp.com
+- type: Features
+  data:
+  - name: Aircraft Parts Distribution
+    description: Global distribution of new and used aircraft and engine parts for commercial and government
+      aviation platforms with 23 million parts processed annually.
+  - name: Airframe MRO
+    description: North America's leading airframe maintenance, repair, and overhaul services including
+      full structural checks, modifications, and aircraft painting.
+  - name: Component MRO
+    description: Comprehensive component, avionics, and landing gear maintenance and repair services for
+      commercial and military aviation.
+  - name: Trax MRO Software
+    description: Integrated aviation maintenance management software covering fleet management, maintenance
+      tracking, inventory, and regulatory compliance.
+  - name: Aerostrat Parts Management
+    description: Aviation supply chain software for inventory optimization, demand forecasting, and procurement
+      automation.
+  - name: Airinmar Warranty Management
+    description: Warranty claim processing and components repair management software for airlines and
+      MRO organizations.
+  - name: Government Expeditionary Services
+    description: Defense and government aviation services including maintenance programs, shelter systems,
+      and supply chain support in over 20 countries.
+- type: UseCases
+  data:
+  - name: Commercial Airline MRO
+    description: Commercial airlines outsourcing airframe and component maintenance to AAR for cost-effective,
+      FAA/EASA-approved maintenance programs.
+  - name: Aviation Parts Sourcing
+    description: Airlines and MROs sourcing new and used aircraft parts through AAR's global parts distribution
+      network for aircraft-on-ground (AOG) situations.
+  - name: Fleet Management Software
+    description: Airlines and MROs implementing Trax MRO software for end-to-end aircraft maintenance
+      management, inventory control, and compliance reporting.
+  - name: Government Aircraft Sustainment
+    description: Defense agencies contracting AAR for aircraft maintenance, supply chain, and expeditionary
+      sustainment programs in deployed environments.
+  - name: Warranty Claims Processing
+    description: Airlines using Airinmar to streamline warranty claim submissions, track repair orders,
+      and manage vendor relationships for component warranties.
+  - name: Supply Chain Optimization
+    description: MRO organizations using Aerostrat to optimize parts inventory levels, reduce carrying
+      costs, and improve procurement efficiency.
+- type: Integrations
+  data:
+  - name: Airlines and Commercial Operators
+    description: Direct partnerships with major commercial airlines for MRO contracts, parts supply, and
+      software implementation.
+  - name: Government and Defense Agencies
+    description: Contracts with US and international government defense agencies for aircraft sustainment
+      and supply chain services.
+  - name: FAA and EASA
+    description: Regulatory approvals and compliance integration with FAA, EASA, and other civil aviation
+      authority regulatory frameworks.
+  - name: OEM Partnerships
+    description: Authorized maintenance and parts relationships with major aircraft OEMs including Boeing,
+      Airbus, and engine manufacturers.
+- type: TermsOfService
+  url: https://www.aarcorp.com/en/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.aarcorp.com/en/terms-and-conditions/privacy-notice/
+- type: Support
+  url: https://www.aarcorp.com/en/contact/
+- type: Blog
+  url: https://www.aarcorp.com/en/newsroom/press-releases/
+- type: Compliance
+  url: https://www.aarcorp.com/en/about/certifications/
+- type: Conformance
+  url: conformance/aar-conformance.yml
+- type: Authentication
+  url: authentication/aar-authentication.yml
+- type: ErrorCatalog
+  url: errors/aar-problem-types.yml
+- type: Conventions
+  url: conventions/aar-conventions.yml
+- type: Plans
+  url: plans/aar-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/aar-rate-limits.yml
+- type: LLMsTxt
+  url: llms/aar-llms.txt
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: no-machine-readable-spec
+  detail: AAR runs a real, anonymously callable API — the Adobe Commerce webapi behind the AAR PAARTS
+    Store at shop.aarcorp.com/rest/V1/ — but publishes no contract for it, and the platform's own schema
+    generator returns HTTP 500 for both /rest/all/schema and /soap?wsdl_list=1, so neither an OpenAPI
+    nor a WSDL could be harvested from a host that plainly serves one.
+  evidence:
+  - url: https://shop.aarcorp.com/rest/V1/directory/currency
+    status: 200
+  - url: https://shop.aarcorp.com/rest/all/schema?services=all
+    status: 500
+  - url: https://shop.aarcorp.com/soap?wsdl_list=1
+    status: 500
+  - url: https://api.aarcorp.com/openapi.json
+    status: 404
+  - url: https://www.aarcorp.com/.well-known/security.txt
+    status: 404
+  - url: https://www.trax.aero/openapi.json
+    status: 404
+  checked: '2026-08-29'

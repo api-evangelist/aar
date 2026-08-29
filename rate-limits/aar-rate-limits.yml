@@ -6,9 +6,10 @@ providerId: aar
 created: '2026-05-04'
 # Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
 # bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+method: probed
+modified: '2026-08-29'
+reconciled: true
+limit_count: 0
 tags:
   - Aviation
   - MRO
@@ -16,9 +17,32 @@ tags:
   - Rate Limiting
 description: AAR does not publish public rate-limit documentation. Limits are governed by the underlying
   software product (Trax, Aerostrat, Airinmar) license or the parts-supply integration contract.
-notes: No public developer rate-limit documentation — placeholder only.
+notes: >-
+  Re-verified 2026-08-29. AAR publishes no rate-limit documentation on any host, and none was
+  observable at runtime: live 200 responses from the one anonymously reachable AAR API surface
+  (https://shop.aarcorp.com/rest/V1/directory/currency) carry NO rate-limit headers at all —
+  the full response header set is content-type, cache-control, accept-ranges, x-platform-server,
+  x-frame-options, traceresponse, x-timer, x-debug-info, date, x-served-by, x-cache,
+  x-cache-hits, strict-transport-security, vary, content-length. No X-RateLimit-*, no
+  RateLimit-*, no Retry-After. limit_count is 0 because nothing is published AND nothing is
+  signalled, which is the worse of the two for an agent: there is no runtime signal to back
+  off on.
+observed_headers: []
+observed_on:
+  - url: https://shop.aarcorp.com/rest/V1/directory/currency
+    status: 200
+    rate_limit_headers: none
+  - url: https://shop.aarcorp.com/rest/V1/products
+    status: 401
+    rate_limit_headers: none
+  - url: https://api.aarcorp.com/
+    status: 404
+    rate_limit_headers: none
 sources:
-  - https://www.aarcorp.com
+  - url: https://www.aarcorp.com
+    status: 200
+  - url: https://shop.aarcorp.com/rest/V1/directory/currency
+    status: 200
 responseCodes:
   throttled: 429
 limits:

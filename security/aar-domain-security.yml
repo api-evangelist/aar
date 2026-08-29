@@ -1,12 +1,61 @@
-generated: '2026-07-11'
+generated: '2026-08-29'
 method: probed
-source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+source: live DNS/TLS/HTTP probes of every host in apis.yml (Website, humanURL, baseURL) plus the AAR-controlled
+  product and gateway hosts found during contract discovery on 2026-08-29
 hosts:
 - host: www.aarcorp.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Sep  1 17:47:23 2026 GMT
+  cert_expires: Nov  2 19:25:43 2026 GMT
   hsts: false
+- host: www.trax.aero
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov  2 19:25:43 2026 GMT
+  hsts: false
+- host: aerostratsoftware.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 18 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: shop.aarcorp.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov  1 10:26:45 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  note: AAR PAARTS Store — the one live, anonymously reachable AAR API host (Adobe Commerce webapi at
+    /rest/V1).
+- host: api.aarcorp.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov  2 19:25:43 2026 GMT
+  hsts: false
+  note: API gateway host. Answers a JSON 404 envelope on every path probed; no anonymous route found.
+- host: www.airinmar.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Dec 15 13:43:43 2026 GMT
+  hsts: true
+  hsts_max_age: 63072000
+  hsts_include_subdomains: true
+  note: Airinmar subsidiary. Only AAR host observed negotiating TLS 1.2 rather than 1.3.
+- host: www.airvoyant.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov  9 17:39:21 2026 GMT
+  hsts: true
+  hsts_max_age: 2628000
+  note: Airvoyant subsidiary. HSTS max-age is 2,628,000s (~30 days), below the 1-year preload threshold.
+- host: myconnection.aarcorp.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: null
+  hsts: null
+  note: Partner portal. TLS 1.3 handshake and HTTP/2 stream both complete (Let's Encrypt cert, CN=www.aarcorp.com,
+    SAN covers myconnection.aarcorp.com) but the origin sends no response body within 15s. Probed once,
+    not retried.
 domains:
 - domain: aarcorp.com
   dnssec: false
@@ -14,3 +63,42 @@ domains:
   spf: true
   dmarc: true
   dmarc_policy: quarantine
+- domain: trax.aero
+  dnssec: false
+  caa:
+  - 0 issuewild "amazonaws.com"
+  - 0 issuewild "amazontrust.com"
+  - 0 issuewild "awstrust.com"
+  - 0 issuewild "digicert.com"
+  - 0 issuewild "letsencrypt.org"
+  - 0 issuewild "pki.goog"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: airinmar.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: airvoyant.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+  note: DMARC rua/ruf report addresses point at trax.aero, confirming Airvoyant is operated out of the
+    Trax organisation.
+summary:
+  hosts_probed: 8
+  hsts_enabled: 4
+  hsts_missing:
+  - api.aarcorp.com
+  - www.aarcorp.com
+  - www.trax.aero
+  dnssec_enabled: 0
+  caa_present:
+  - trax.aero
+  note: No AAR registrable domain has DNSSEC. Only trax.aero publishes CAA records. The corporate site
+    www.aarcorp.com and the api.aarcorp.com gateway both serve without HSTS, while every subsidiary host
+    has it.

@@ -1,0 +1,109 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Observed request/response semantics of https://shop.aarcorp.com/rest/V1/* on 2026-08-29.
+  AAR CORP. publishes no API conventions, style guide, or developer reference.
+provider: AAR Corp
+providerId: aar
+description: >-
+  AAR CORP. has no developer portal and no published API conventions. This document records
+  only what the one live, anonymously reachable AAR API surface — the AAR PAARTS Store
+  commerce API at shop.aarcorp.com/rest/V1/ — actually does on the wire. Every field is
+  either an observation with a probe behind it or an explicit "not published". Nothing here
+  is a claim that AAR documents any of it.
+surfaces:
+  - name: AAR PAARTS Store REST
+    base: https://shop.aarcorp.com/rest/V1
+    platform: Adobe Commerce (Magento 2) webapi
+    documented_by_provider: false
+  - name: AAR API gateway
+    base: https://api.aarcorp.com
+    documented_by_provider: false
+    note: Live host, JSON 404 on every path probed; no anonymous route discovered.
+authentication:
+  style: http bearer (observed from the 401 challenge only)
+  documented: false
+  see: authentication/aar-authentication.yml
+media_types:
+  request: application/json
+  response: application/json; charset=utf-8
+  note: A SOAP 1.2 surface is also mounted at /soap but returns a Fault rather than a WSDL.
+versioning:
+  scheme: uri-path
+  current: V1
+  observed_from: every route lives under /rest/V1/
+  policy_published: false
+  deprecation_policy: null
+  sunset_header: false
+pagination:
+  status: not-observed
+  note: >-
+    Every collection endpoint that would carry pagination (/rest/V1/products and the rest of
+    the catalog surface) returns 401 anonymously, so no pagination parameters or response
+    envelope could be observed. AAR publishes none. Not recorded as absent — recorded as
+    unobservable without credentials.
+idempotency:
+  supported: false
+  evidence: >-
+    No Idempotency-Key or equivalent header is documented by AAR, none appears in any
+    observed response, and there is no published spec in which such a parameter could be
+    declared. POST /rest/V1/guest-carts was called anonymously and returned a fresh quote
+    identifier with no idempotency affordance offered.
+  pointer_emitted: false
+  pointer_note: >-
+    No Idempotency pointer is wired into apis.yml. Emitting one would assert an idempotency
+    contract AAR does not have.
+request_tracing:
+  header: traceresponse
+  observed_value_shape: 00-<32 hex trace-id>-<16 hex span-id>-01
+  standard: W3C Trace Context (traceresponse)
+  documented_by_provider: false
+  note: >-
+    The commerce host returns a W3C traceresponse header on 200 responses. It is emitted by
+    the hosting platform, not by an AAR-published tracing contract, but it is a real,
+    correlatable runtime signal an integrator can log.
+rate_limit_signaling:
+  headers_observed: []
+  note: >-
+    No X-RateLimit-*, RateLimit-*, or Retry-After header was returned on any observed
+    response. See rate-limits/aar-rate-limits.yml.
+error_envelope:
+  format: vendor-json
+  rfc9457: false
+  shape: '{ "message": string, "parameters": object (optional) }'
+  see: errors/aar-problem-types.yml
+caching:
+  observed:
+    - 'cache-control: no-store on /rest/V1/directory/currency'
+    - 'strict-transport-security: max-age=31536000 on shop.aarcorp.com'
+    - Fastly edge in front of the origin (x-served-by, x-cache headers observed)
+reversibility:
+  status: undocumented
+  grade: none
+  read_only: false
+  rationale: >-
+    The API is NOT read-only — POST /rest/V1/guest-carts was created anonymously and returned
+    a quote identifier, and the authenticated surface is a full commerce catalog/order API —
+    so reversibility is applicable, not na. But AAR publishes nothing about reversing any
+    write: no cancel, void, refund, or restore operation is documented, and no window is
+    stated anywhere on aarcorp.com or shop.aarcorp.com.
+  write_surfaces:
+    - operation: POST /rest/V1/guest-carts
+      access: anonymous
+      reversal_operation: null
+      window: null
+      documented: false
+      note: >-
+        No reversal path was observed or published. Deliberately left null — asserting a
+        cancellation window AAR does not state would be an invented fact with money attached.
+  dry_run_mode:
+    supported: false
+    documented: false
+  note: >-
+    An agent acting against this API today cannot determine, from anything AAR publishes,
+    whether an action it takes can be taken back. That is the finding.
+cross_links:
+  errors: errors/aar-problem-types.yml
+  authentication: authentication/aar-authentication.yml
+  rate_limits: rate-limits/aar-rate-limits.yml
+  conformance: conformance/aar-conformance.yml
