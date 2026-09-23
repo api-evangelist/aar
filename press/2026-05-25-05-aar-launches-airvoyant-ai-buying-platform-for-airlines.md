@@ -1,7 +1,9 @@
 ---
 title: AAR launches Airvoyant AI buying platform for airlines
 url: https://www.stocktitan.net/news/AIR/aar-launches-airvoyant-sm-an-ai-driven-procurement-platform-for-eyurv106zf5r.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"AAR" press release artificial intelligence'
 position: 5
 source: serpapi-google

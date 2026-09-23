@@ -1,7 +1,9 @@
 ---
 title: AAR launches Airvoyant℠, an AI-driven procurement ...
 url: https://www.prnewswire.com/news-releases/aar-launches-airvoyant-an-ai-driven-procurement-platform-for-airlines-and-mros-302748577.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"AAR" press release artificial intelligence'
 position: 1
 source: serpapi-google

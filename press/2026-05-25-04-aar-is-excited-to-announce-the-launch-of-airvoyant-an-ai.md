@@ -1,7 +1,9 @@
 ---
 title: AAR is excited to announce the launch of Airvoyant, an AI- ...
 url: https://www.instagram.com/p/DXZDtFaCleM/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"AAR" press release artificial intelligence'
 position: 4
 source: serpapi-google

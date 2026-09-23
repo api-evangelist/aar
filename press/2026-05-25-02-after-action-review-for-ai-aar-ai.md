@@ -1,7 +1,9 @@
 ---
 title: After-Action Review for AI (AAR/AI)
 url: https://dl.acm.org/doi/10.1145/3453173
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"AAR" press release artificial intelligence'
 position: 2
 source: serpapi-google
