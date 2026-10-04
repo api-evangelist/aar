@@ -1,6 +1,6 @@
 aid: aar
 url: https://raw.githubusercontent.com/api-evangelist/aar/refs/heads/main/apis.yml
-name: AAR Corp
+name: AAR
 type: Index
 deliveryModel:
   model: unknown
@@ -310,3 +310,4 @@ x-coverage:
   - url: https://www.trax.aero/openapi.json
     status: 404
   checked: '2026-08-29'
+x-legal-name: AAR Corp
