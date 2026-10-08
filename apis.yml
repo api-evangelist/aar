@@ -194,6 +194,8 @@ apis:
     being marketed as agentic, it publishes no API, no MCP server, no agent card and no developer documentation
     — access is by sales demo only.
 common:
+- type: FinOps
+  url: finops/aar-finops.yml
 - type: DomainSecurity
   url: security/aar-domain-security.yml
 - type: LinkedIn
