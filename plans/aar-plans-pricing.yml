@@ -1,0 +1,84 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: AAR Corp
+providerId: aar
+created: '2026-05-04'
+# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
+# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
+method: searched
+modified: '2026-08-29'
+reconciled: true
+plan_count: 0
+tags:
+  - Aviation
+  - MRO
+  - Aerospace
+  - Defense
+description: AAR Corp is an aerospace and defense MRO services and parts supply business. There is no
+  public developer pricing or self-service API plan; integrations with parts supply, Trax, Aerostrat,
+  and Airinmar software products are sold through commercial contracts to airlines, MROs, and government
+  customers.
+notes: >-
+  Re-verified 2026-08-29 by walking aarcorp.com (1,259 URLs in the sitemap), trax.aero,
+  aerostratsoftware.com, airinmar.com and airvoyant.com. There is no pricing page, no plans
+  page, and no self-service sign-up anywhere in AAR's estate. Every software product routes to
+  "Request a demo" or a sales contact; the parts business routes to AOG phone/email or the
+  myConnection partner portal. plan_count is 0 because AAR publishes zero plans, not because
+  the pricing page was not found. The single entry below records the one commercial motion AAR
+  actually states, and it carries no published price.
+sources:
+  - url: https://www.aarcorp.com/en/software/
+    status: 200
+  - url: https://www.airvoyant.com/
+    status: 200
+    note: '"Request a demo" / sales@airvoyant.com — no pricing published'
+  - url: https://www.trax.aero/en/products/
+    status: 200
+  - url: https://shop.aarcorp.com/
+    status: 200
+    note: >-
+      The AAR PAARTS Store lists per-part prices for individual aviation parts. That is product
+      pricing, not an API or software plan, so it does not count toward plan_count.
+plans:
+  - id: aar-customer
+    name: Customer / Software Contract
+    type: enterprise
+    description: Negotiated commercial contract for parts supply and integrated software products (Trax,
+      Aerostrat, Airinmar).
+    entries:
+      - label: Customer contract
+        name: customer_contract
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: contact AAR sales
+        userMultiplied: false
+    elements:
+      - name: AAR Parts Supply
+      - name: Trax MRO software
+      - name: Aerostrat fleet planning
+      - name: Airinmar repair management
+      - name: Pricing governed by commercial contract
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - negotiated
+  plans:
+  - name: Customer / Software Contract
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
